@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Kino billetter!</h1>
+<div>
+    <label for="film">Velg film: </label>
+    <select id="film" name="film">
+        <option></option>
+        <option>Pirates of the Caribbean</option>
+        <option>Cars 4</option>
+        <option>Det regner kjøttboller</option>
+        <option>Titanic</option>
+    </select>
+
+    <label for="antall">Antall: </label>
+    <input type="text" id="antall" name="antall">
+
+    <label for="fornavn">Fornavn: </label>
+    <input type="text" id="fornavn" name="fornavn">
+
+    <label for="etternavn">Etternavn: </label>
+    <input type="text" id="etternavn" name="etternavn">
+
+    <label for="telefon">Telefonnr: </label>
+    <input type="text" id="telefon" name="telefon">
+
+    <label for="epost">Epost: </label>
+    <input type="text" id="epost" name="epost">
+
+</div>
+
+<button id="kjop">Kjøp Billett</button><br><br>
+
+<h2>Alle billetter: </h2>
+<p id="ut"></p>
+<br><br>
+
+<button id="slett">Slett alle billetter</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="appScript.js" type="application/javascript"></script>
+</body>
+</html>
