@@ -1,14 +1,4 @@
 /*
-const billetter = [];
-function kjøp(){
-    const film = document.getElementById("film").value;
-    const antall = Number(document.getElementById("antall").value);
-    const fornavn = document.getElementById("fornavn").value;
-    const etternavn = document.getElementById("etternavn").value;
-    const telefon = document.getElementById("telefon").value;
-    const epost = document.getElementById("epost").value;
-    let ut = "";
-
     const navnValidering = /^[A-Za-z]+$/;
     const telefonValidering = /^[0-9]+$/;
     const epostValidering = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
@@ -76,22 +66,6 @@ if (feil === false){
             epost};
     billetter.push(billett);
 
-    document.getElementById("film").value = "";
-    document.getElementById("antall").value = "";
-    document.getElementById("fornavn").value = "";
-    document.getElementById("etternavn").value = "";
-    document.getElementById("telefon").value = "";
-    document.getElementById("epost").value = "";
-}
-
-for (let billett of billetter){
-    ut += "Film: " + billett.film + "<br>" + "Antall: " + billett.antall + "<br>" + "Fornavn: " + billett.fornavn +
-        "<br>" + "Etternavn: " + billett.etternavn + "<br>" + "Telefon: " + billett.telefon + "<br>" + "Epost: " +
-        billett.epost + "<br><br>";
-}
-document.getElementById("utFelt").innerHTML = ut;
-
-}
 function slett(){
     document.getElementById("utFelt").innerHTML = "";
     billetter.length = 0;
@@ -108,18 +82,36 @@ $("#kjop").click(function(){
         telefon: $("#telefon").val(),
         epost: $("#epost").val()
     };
+    $.post("/lagre", billett, function(){
+        hentAlle();
+    });
 
-    $.get(url,billett,function (data){
-            $("#ut").append("Film: " + data.film + "<br>Antall: " + data.antall + "<br>Fornavn: " + data.fornavn +
-                "<br>Etternavn: " + data.etternavn + "<br>Telefon: " + data.telefon + "<br>Epost: " + data.epost + "<br><br>");
-        }
-    );
-    //const billetter = [];
-    //billetter.push(billett);
+    $("#antall").val("");
+    $("#film").val("");
+    $("#fornavn").val("");
+    $("#etternavn").val("");
+    $("#telefon").val("");
+    $("#epost").val("");
+
 });
-/*$("#slett").click(function(){
-    $.get(url,billett,function(data){
-        $("#ut").html = "";}
-    );
+
+function hentAlle() {
+    $.get("/hentAlle", function (data) {
+        formaterData(data);
+    });
+}
+
+function formaterData(billetter) {
+    let ut = "";
+    for (const billett of billetter){
+        ut+= "Antall: " + billett.antall + "<br>Film: " + billett.film + "<br>Fornavn: " + billett.fornavn + "<br>Etternavn: " + billett.etternavn +
+        "<br>Telefon: " + billett.telefon + "<br>Epost: " + billett.epost + "<br><br>";
+    }
+    $("#ut").html(ut);
+}
+
+$("#slett").click(function (){
+    $.get( "/slettAlle", function() {
+        hentAlle();
+        });
 });
-*/

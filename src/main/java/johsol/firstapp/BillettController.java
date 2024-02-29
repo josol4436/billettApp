@@ -5,15 +5,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class BillettController{
-    @GetMapping("/")
-    public Billett returBillett(Billett innBillett){
-        return innBillett;
+
+    public final List<Billett> billettRegister = new ArrayList<>();
+    @PostMapping("/lagre")
+    public void lagreBillett(Billett innBillett){
+        billettRegister.add(innBillett);
     }
-
-
-    // public billettRegister<Billett> = new Arraylist<>();
-    // billettRegister.add(Billett);
+    @GetMapping("/hentAlle")
+    public List<Billett> hentAlle(){
+        return billettRegister;
+    }
+    @GetMapping("/slettAlle")
+    public void slettAlle(){
+        billettRegister.clear();
+    }
 }

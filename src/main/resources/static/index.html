@@ -3,43 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Kino billetter!</h1>
-<div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Kino</h3>
+            <form class="form">
+                <div class="form-group">
     <label for="film">Velg film: </label>
-    <select id="film" name="film">
+    <select id="film" name="film" class="form-control">
         <option></option>
         <option>Pirates of the Caribbean</option>
         <option>Cars 4</option>
         <option>Det regner kjøttboller</option>
         <option>Titanic</option>
     </select>
+                    <label for="antall">Antall: </label>
+                    <input type="text" class="form-control" id="antall" name="antall">
 
-    <label for="antall">Antall: </label>
-    <input type="text" id="antall" name="antall">
+                    <label for="fornavn">Fornavn: </label>
+                    <input type="text" class="form-control" id="fornavn" name="fornavn">
 
-    <label for="fornavn">Fornavn: </label>
-    <input type="text" id="fornavn" name="fornavn">
+                    <label for="etternavn">Etternavn: </label>
+                    <input type="text" class="form-control" id="etternavn" name="etternavn">
 
-    <label for="etternavn">Etternavn: </label>
-    <input type="text" id="etternavn" name="etternavn">
+                    <label for="telefon">Telefonnr: </label>
+                    <input type="text" class="form-control" id="telefon" name="telefon">
 
-    <label for="telefon">Telefonnr: </label>
-    <input type="text" id="telefon" name="telefon">
+                    <label for="epost">Epost: </label>
+                    <input type="text" class="form-control" id="epost" name="epost">
+                </div>
+            </form>
+            <button class="btn btn-primary" id="kjop">Registrer</button>
 
-    <label for="epost">Epost: </label>
-    <input type="text" id="epost" name="epost">
-
+                <div class="col-md-12">
+                    <h3>Alle billettene:</h3>
+                    <div id="ut"></div>
+                    <button class="btn btn-danger" id="slett">Slett alle kunder</button>
+                </div>
+        </div>
+    </div>
 </div>
-
-<button id="kjop">Kjøp Billett</button><br><br>
-
-<h2>Alle billetter: </h2>
-<p id="ut"></p>
-<br><br>
-
-<button id="slett">Slett alle billetter</button>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="appScript.js" type="application/javascript"></script>
