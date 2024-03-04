@@ -31,27 +31,37 @@
         <option>Cars 4</option>
         <option>Det regner kjøttboller</option>
         <option>Titanic</option>
-    </select>
+    </select><p class="has-error" id="filmError"></p>
+
                     <label for="antall">Antall: </label>
-                    <input type="text" class="form-control" id="antall" name="antall">
+                    <input type="text" class="form-control" id="antall" name="antall"> <p class="has-error" id="antallError" style="color: red"></p>
 
                     <label for="fornavn">Fornavn: </label>
-                    <input type="text" class="form-control" id="fornavn" name="fornavn">
+                    <input type="text" class="form-control" id="fornavn" name="fornavn"><p class="has-error" id="fornavnError" style="color: red"></p>
 
                     <label for="etternavn">Etternavn: </label>
-                    <input type="text" class="form-control" id="etternavn" name="etternavn">
+                    <input type="text" class="form-control" id="etternavn" name="etternavn"><p class="has-error" id="etternavnError" style="color: red"></p>
 
                     <label for="telefon">Telefonnr: </label>
-                    <input type="text" class="form-control" id="telefon" name="telefon">
+                    <input type="text" class="form-control" id="telefon" name="telefon"><p class="has-error" id="telefonError" style="color: red"></p>
 
                     <label for="epost">Epost: </label>
-                    <input type="text" class="form-control" id="epost" name="epost">
+                    <input type="text" class="form-control" id="epost" name="epost"><p class="has-error" id="epostError" style="color: red"></p>
                 </div>
             </form>
             <button class="btn btn-primary" id="kjop">Registrer</button>
         </div>
     </div>
 </div>
+
+<footer class="modal-footer" style="margin-top: 200px">
+        <div class="text-info">
+                Kino program <br>
+                Hele prosjektet er ute på github <br>
+                Oslomet P35 <br>
+                Johannes Solheim <br>
+        </div>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="appScript.js" type="application/javascript"></script>

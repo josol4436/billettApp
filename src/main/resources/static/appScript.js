@@ -1,88 +1,70 @@
-/*
-    const navnValidering = /^[A-Za-z]+$/;
-    const telefonValidering = /^[0-9]+$/;
-    const epostValidering = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
-     "epostRegex" er hentet fra:
-        https://emaillistvalidation.com/blog/email-validation-in-javascript-using-regular-expressions-the-ultimate-guide/
 
+const navnValidering = /^[A-Za-z]+$/;
+const telefonValidering = /^[0-9]+$/;
+const epostValidering = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
+//"epostRegex" er hentet fra: https://emaillistvalidation.com/blog/email-validation-in-javascript-using-regular-expressions-the-ultimate-guide/
 
-let feil = false;
-
-if (film === ""){
-    document.getElementById("filmError").innerHTML = "Feil med film";
-    feil = true;
-}
-else{
-    document.getElementById("filmError").innerHTML = "";
-}
-
-if (antall < 0){
-    document.getElementById("antallError").innerHTML = "Feil med antall";
-    feil = true;
-}
-else{
-    document.getElementById("antallError").innerHTML = "";
-}
-
-if (!telefonValidering.test(telefon)){
-    document.getElementById("telefonError").innerHTML = "Feil med telefon nummer";
-    feil = true;
-}
-else{
-    document.getElementById("telefonError").innerHTML = "";
-}
-
-if (!navnValidering.test(fornavn)){
-    document.getElementById("fornavnError").innerHTML = "Feil med navn";
-    feil = true;
-}
-else{
-    document.getElementById("fornavnError").innerHTML = "";
-}
-
-if (!navnValidering.test(etternavn)){
-    document.getElementById("etternavnError").innerHTML = "Feil med navn";
-    feil = true;
-}
-else{
-    document.getElementById("etternavnError").innerHTML = "";
-}
-
-if (!epostValidering.test(epost)){
-    document.getElementById("epostError").innerHTML = "Feil med epost";
-    feil = true;
-}
-else{
-    document.getElementById("epostError").innerHTML = "";
-}
-
-if (feil === false){
-    let billett =
-        {film,
-            antall,
-            fornavn,
-            etternavn,
-            telefon,
-            epost};
-    billetter.push(billett);
-
-function slett(){
-    document.getElementById("utFelt").innerHTML = "";
-    billetter.length = 0;
-}
-*/
-const url  ="http://localhost:8080/";
-
-$("#kjop").click(function(){
-    const billett={
-        antall: $("#antall").val(),
-        film: $("#film").val(),
-        fornavn: $("#fornavn").val(),
-        etternavn: $("#etternavn").val(),
-        telefon: $("#telefon").val(),
-        epost: $("#epost").val()
+$("#kjop").click(function() {
+    let feil = true;
+    const antall = $("#antall").val();
+    const film = $("#film").val();
+    const fornavn = $("#fornavn").val();
+    const etternavn = $("#etternavn").val();
+    const telefon = $("#telefon").val();
+    const epost = $("#epost").val();
+    const billett = {
+        antall: antall,
+        film: film,
+        fornavn: fornavn,
+        etternavn: etternavn,
+        telefon: telefon,
+        epost: epost
     };
-    $.post("/lagre", billett, function(){
+
+    if (antall === ""){
+    $("#antallError").html("Skriv inn ett heltall");
+    feil = false;
+    }
+    else {
+        $("#antallError").html("");
+    }
+    if (film === ""){
+        $("#filmError").html("Feil ved input av film");
+        feil = false;    }
+    else {
+        $("#filmError").html("");
+    }
+    if (fornavn === "" || !navnValidering.test(fornavn)){
+        $("#fornavnError").html("Feil ved input av fornavn");
+        feil = false;    }
+    else {
+        $("#fornavnError").html("");
+    }
+    if (etternavn === "" || !navnValidering.test(etternavn)){
+        $("#etternavnError").html("Feil ved input av etternavn");
+        feil = false;    }
+    else {
+        $("#etternavnError").html("");
+    }
+    if (telefon === "" || !telefonValidering.test(telefon)){
+        $("#telefonError").html("Feil ved input av telefon nummer");
+        feil = false;    }
+    else {
+        $("#telefonError").html("");
+    }
+    if (epost === "" || !epostValidering.test(epost)){
+        $("#epostError").html("Feil ved input av epost");
+        feil = false;    }
+    else {
+        $("#epostError").html("");
+    }
+
+
+    if (feil===false) {
+        alert("Error ved kjøp av billett, se felter med feilmelding");
+    }
+else{
+    $.post("/lagre", billett, function () {
         hentAlle();
     });
 
@@ -92,6 +74,5 @@ $("#kjop").click(function(){
     $("#etternavn").val("");
     $("#telefon").val("");
     $("#epost").val("");
-
+}
 });
-

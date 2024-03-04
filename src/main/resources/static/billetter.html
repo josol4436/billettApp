@@ -20,16 +20,25 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <div class="col-md-12">
+        <div class="col-md-2">
+            <div class="col-lg-4">
                 <h3>Alle billettene:</h3>
-                <button class="btn btn-primary" onclick="hentAlle()">Hent billetter</button>
+                <button class="btn btn-primary" onclick="hentAlle()" style="margin-bottom: 15px">Hent billetter</button>
                 <br>
                 <div id="ut"></div> <button class="btn btn-danger" id="slett">Slett alle kunder</button>
             </div>
         </div>
     </div>
 </div>
+
+<footer class="modal-footer" style="margin-top: 200px">
+    <div class="text-info">
+        Kino program <br>
+        Hele prosjektet er ute på github <br>
+        Oslomet P35 <br>
+        Johannes Solheim <br>
+    </div>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="billetter.js" type="application/javascript"></script>
