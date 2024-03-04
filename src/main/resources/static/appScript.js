@@ -95,23 +95,3 @@ $("#kjop").click(function(){
 
 });
 
-function hentAlle() {
-    $.get("/hentAlle", function (data) {
-        formaterData(data);
-    });
-}
-
-function formaterData(billetter) {
-    let ut = "";
-    for (const billett of billetter){
-        ut+= "Antall: " + billett.antall + "<br>Film: " + billett.film + "<br>Fornavn: " + billett.fornavn + "<br>Etternavn: " + billett.etternavn +
-        "<br>Telefon: " + billett.telefon + "<br>Epost: " + billett.epost + "<br><br>";
-    }
-    $("#ut").html(ut);
-}
-
-$("#slett").click(function (){
-    $.get( "/slettAlle", function() {
-        hentAlle();
-        });
-});
