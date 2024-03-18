@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@RestController  //Sier til kompiler at den vil snakke med en server
 public class BillettController{
 
     public final List<Billett> billettRegister = new ArrayList<>();
