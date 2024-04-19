@@ -1,7 +1,6 @@
 package johsol.firstapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -49,7 +48,12 @@ public class BillettRepository{
             billettNr
         });
     }
-    public Billett findById(long billettNr) {
+    public Billett findById(Long billettNr) {
         return db.queryForObject("SELECT * FROM billett WHERE billettNr=?", new BillettRowMapper(), billettNr);
+    }
+
+    public int oppdaterBillettiDB(Billett billett) {
+        String sql = "UPDATE billett SET film = ?, antall =?, fornavn =?, etternavn =?, telefon =?, epost =? WHERE billettNr= ?";
+        return db.update(sql, billett.getFilm(), billett.getAntall(), billett.getFornavn(), billett.getEtternavn(), billett.getTelefon(), billett.getEpost(), billett.getBillettNr());
     }
 }

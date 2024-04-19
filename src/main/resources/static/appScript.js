@@ -12,7 +12,6 @@ $("#kjop").click(function() {
     const etternavn = $("#etternavn").val();
     const telefon = $("#telefon").val();
     const epost = $("#epost").val();
-    let billettNr;
     const billett = {
         film: film,
         antall: antall,

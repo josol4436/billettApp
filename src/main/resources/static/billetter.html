@@ -26,7 +26,7 @@
                 <button class="btn btn-primary" onclick="hentAlle()" style="margin-bottom: 15px">Hent billetter</button>
                 <br>
                 <div id="ut"></div> <button class="btn btn-danger" id="slett">Slett alle kunder</button>
-                <div style="border: solid 1px; width:250px; text-align: center">
+                <div style="border: solid 1px; width:250px; text-align: center; display: none;" id="minDiv">
                     <br>
                     <h2> Oppdater billett </h2>
                     <p>ID:</p><p id="billettNr"></p>
@@ -48,7 +48,7 @@
                     <label>Epost</label><br>
                     <input type="text" id="epostEdit"><br>
                     <br>
-                    <button onclick="oppdaterBillett()">click</button>
+                    <button id="oppdater" onclick="oppdaterBillettiDB()">Oppdater</button>
                     <br>
                 </div>
             </div>

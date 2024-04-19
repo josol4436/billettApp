@@ -1,4 +1,4 @@
-
+const x = document.getElementById("minDiv");
 function hentAlle() {
     $.get("/hentAlle", function (data) {
         formaterData(data);
@@ -40,4 +40,28 @@ function oppdaterBillett(billettNr) {
         document.getElementById("telefonEdit").value = data.telefon;
         document.getElementById("epostEdit").value = data.epost;
     });
+
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }
+}
+
+function oppdaterBillettiDB(){
+    billett = {
+        "billettNr": document.getElementById("billettNr").innerHTML,
+        "film": document.getElementById("filmEdit").value,
+        "antall": document.getElementById("antallEdit").value,
+        "fornavn": document.getElementById("fornavnEdit").value,
+        "etternavn": document.getElementById("etternavnEdit").value,
+        "telefon": document.getElementById("telefonEdit").value,
+        "epost": document.getElementById("epostEdit").value
+    }
+    console.log( document.getElementById("billettNr").value);
+    console.log(billett); //good for debugging in case the elements from student are no
+    $.post("http://localhost:8080/oppdaterBillettiDB",billett, function (data){})
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    }
+    hentAlle();
+    alert("Billett oppdatert");
 }

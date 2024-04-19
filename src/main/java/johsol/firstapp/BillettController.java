@@ -29,5 +29,11 @@ public class BillettController{
     }
     @GetMapping("/hentBilletterFraDB")
     public Billett hentBilletterFraDB(@RequestParam Long billettNr){return repo.findById(billettNr);}
+
+    @PostMapping("/oppdaterBillettiDB")
+    public String oppdaterBillettiDB(Billett billett){
+        repo.oppdaterBillettiDB(billett);
+        return "Oppdatert";
+    }
 }
 
