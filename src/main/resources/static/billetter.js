@@ -31,9 +31,8 @@ function slettBillett(billettNr){
  });
 }
 function oppdaterBillett(billettNr) {
-    document.getElementById("billettNr").innerHTML = billettNr;
-
     $.get("http://localhost:8080/hentBilletterFraDB?billettNr=" + billettNr, function (data) {
+        document.getElementById("billettNr").innerHTML = billettNr;
         document.getElementById("filmEdit").value = data.film;
         document.getElementById("antallEdit").value = data.antall;
         document.getElementById("fornavnEdit").value = data.fornavn;
