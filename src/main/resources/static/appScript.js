@@ -6,15 +6,16 @@ const epostValidering = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
 
 $("#kjop").click(function() {
     let feil = true;
-    const antall = $("#antall").val();
     const film = $("#film").val();
+    const antall = $("#antall").val();
     const fornavn = $("#fornavn").val();
     const etternavn = $("#etternavn").val();
     const telefon = $("#telefon").val();
     const epost = $("#epost").val();
+    let billettNr;
     const billett = {
-        antall: antall,
         film: film,
+        antall: antall,
         fornavn: fornavn,
         etternavn: etternavn,
         telefon: telefon,
@@ -64,8 +65,8 @@ $("#kjop").click(function() {
         alert("Error ved kjøp av billett, se felter med feilmelding");
     }
 else{
-    $.post("/lagre", billett, function () {
-        hentAlle();
+    console.log(billett)
+    $.post("/lagre", billett, function (data) {
     });
 
     $("#antall").val("");

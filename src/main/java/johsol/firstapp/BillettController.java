@@ -1,11 +1,8 @@
 package johsol.firstapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController  //Sier til kompiler at den vil snakke med en server
@@ -14,8 +11,8 @@ public class BillettController{
     private BillettRepository repo;
 
     @PostMapping("/lagre")
-    public void lagreBillett(Billett innBillett){
-    repo.lagreBillett(innBillett);
+    public void lagre(Billett billett){
+    repo.lagreBillett(billett);
     }
     @GetMapping("/hentAlle")
     public List<Billett> hentAlle(){
@@ -25,4 +22,12 @@ public class BillettController{
     public void slettAlle(){
         repo.slettAlle();
     }
+
+    @DeleteMapping("/slettBillett")
+    public void slettBillett(@RequestParam Long billettNr){
+        repo.slettBillett(billettNr);
+    }
+    @GetMapping("/hentBilletterFraDB")
+    public Billett hentBilletterFraDB(@RequestParam Long billettNr){return repo.findById(billettNr);}
 }
+

@@ -26,6 +26,31 @@
                 <button class="btn btn-primary" onclick="hentAlle()" style="margin-bottom: 15px">Hent billetter</button>
                 <br>
                 <div id="ut"></div> <button class="btn btn-danger" id="slett">Slett alle kunder</button>
+                <div style="border: solid 1px; width:250px; text-align: center">
+                    <br>
+                    <h2> Oppdater billett </h2>
+                    <p>ID:</p><p id="billettNr"></p>
+                    <label>Film navn</label><br>
+                    <select id="filmEdit" name="filmEdit" class="form-control">
+                        <option>Pirates of the Caribbean</option>
+                        <option>Cars 4</option>
+                        <option>Det regner kjøttboller</option>
+                        <option>Titanic</option>
+                    </select>
+                    <label>Antall</label><br>
+                    <input type="text" id="antallEdit"><br>
+                    <label>Fornavn</label><br>
+                    <input type="text" id="fornavnEdit"><br>
+                    <label>Etternavn</label><br>
+                    <input type="text" id="etternavnEdit"><br>
+                    <label>Telefon</label><br>
+                    <input type="text" id="telefonEdit"><br>
+                    <label>Epost</label><br>
+                    <input type="text" id="epostEdit"><br>
+                    <br>
+                    <button onclick="oppdaterBillett()">click</button>
+                    <br>
+                </div>
             </div>
         </div>
     </div>
