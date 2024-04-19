@@ -23,29 +23,29 @@
         <div class="col-md-2">
             <div class="col-lg-4">
                 <h3>Alle billettene:</h3>
-                <button class="btn btn-primary" onclick="hentAlle()">Hent billetter</button>
+                <button style="margin-bottom: 10px" class="btn btn-primary" onclick="hentAlle()">Hent billetter</button>
                 <br>
-                <div id="ut"></div> <button class="btn btn-danger" id="slett">Slett alle kunder</button>
+                <div id="ut"></div> <button class="btn btn-danger" id="slett">Slett alle billetter</button>
                 <div style=" width:400px; text-align: center; display: none;" id="minDiv">
                     <br>
                     <h2 class="title"> Oppdater billett </h2>
                     <p style="font-weight: bolder">ID:</p><p id="billettNr"></p>
-                    <label>Film navn</label><br>
+                    <label for="filmEdit">Film navn</label><br>
                     <select id="filmEdit" name="filmEdit" class="form-control">
                         <option>Pirates of the Caribbean</option>
                         <option>Cars 4</option>
                         <option>Det regner kjøttboller</option>
                         <option>Titanic</option>
                     </select>
-                    <label>Antall</label><br>
+                    <label for="antallEdit">Antall</label><br>
                     <input class="form-control" type="text" id="antallEdit"><br>
-                    <label>Fornavn</label><br>
+                    <label for="fornavnEdit">Fornavn</label><br>
                     <input class="form-control" type="text" id="fornavnEdit"><br>
-                    <label>Etternavn</label><br>
+                    <label for="etternavnEdit">Etternavn</label><br>
                     <input class="form-control" type="text" id="etternavnEdit"><br>
-                    <label>Telefon</label><br>
+                    <label for="telefonEdit">Telefon</label><br>
                     <input class="form-control" type="text" id="telefonEdit"><br>
-                    <label>Epost</label><br>
+                    <label for="epostEdit">Epost</label><br>
                     <input class="form-control" type="text" id="epostEdit"><br>
                     <br>
                     <button class="btn btn-primary" id="oppdater" onclick="oppdaterBillettiDB()">Oppdater</button>

@@ -1,8 +1,8 @@
-const x = document.getElementById("minDiv");
 function hentAlle() {
     $.get("/hentAlle", function (data) {
         formaterData(data);
     });
+    document.getElementById("myDIV").style.display = "block";
 }
 
 function formaterData(billetter) {
@@ -24,10 +24,7 @@ $("#slett").click(function (){
 function slettBillett(billettNr){
  $.ajax({
      url : "slettBillett?billettNr=" + billettNr,
-     type : "DELETE",
-     success: function(result){
-        //Gjør noe med resultatet om du vil
-     }
+     type : "DELETE"
  });
 }
 function oppdaterBillett(billettNr) {
@@ -40,14 +37,12 @@ function oppdaterBillett(billettNr) {
         document.getElementById("telefonEdit").value = data.telefon;
         document.getElementById("epostEdit").value = data.epost;
     });
-
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    }
+    document.getElementById("minDiv").style.display = "block";
 }
 
 function oppdaterBillettiDB(){
-    billett = {
+
+    const billett = {
         "billettNr": document.getElementById("billettNr").innerHTML,
         "film": document.getElementById("filmEdit").value,
         "antall": document.getElementById("antallEdit").value,
@@ -56,11 +51,10 @@ function oppdaterBillettiDB(){
         "telefon": document.getElementById("telefonEdit").value,
         "epost": document.getElementById("epostEdit").value
     }
+
     console.log( document.getElementById("billettNr").value);
     console.log(billett); //good for debugging in case the elements from student are no
     $.post("http://localhost:8080/oppdaterBillettiDB",billett, function (data){})
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    }
+    document.getElementById("minDiv").style.display = "none";
     hentAlle(); //Funker ikke fordi den er raskere enn det å putte ting opp på serveren:((
 }

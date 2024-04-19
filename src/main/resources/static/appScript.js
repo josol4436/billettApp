@@ -1,11 +1,8 @@
-
 const navnValidering = /^[A-Za-z]+$/;
 const telefonValidering = /^[0-9]+$/;
 const epostValidering = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
 //"epostRegex" er hentet fra: https://emaillistvalidation.com/blog/email-validation-in-javascript-using-regular-expressions-the-ultimate-guide/
-
-$("#kjop").click(function() {
-    let feil = true;
+$("#kjop").click(function(feil) {
     const film = $("#film").val();
     const antall = $("#antall").val();
     const fornavn = $("#fornavn").val();
@@ -20,10 +17,28 @@ $("#kjop").click(function() {
         telefon: telefon,
         epost: epost
     };
+    validering();
+    if (feil===false) {
+        alert("Error ved kjøp av billett, se felter med feilmelding");
+    }
+    else{
+        console.log(billett)
+        $.post("/lagre", billett, function (data) {
+        });
 
+        $("#film").val("");
+        $("#antall").val("");
+        $("#fornavn").val("");
+        $("#etternavn").val("");
+        $("#telefon").val("");
+        $("#epost").val("");
+    }
+});
+function validering(film,antall,fornavn,etternavn,telefon,epost){
+    let feil = true;
     if (antall === ""){
-    $("#antallError").html("Skriv inn ett heltall");
-    feil = false;
+        $("#antallError").html("Skriv inn ett heltall");
+        feil = false;
     }
     else {
         $("#antallError").html("");
@@ -46,33 +61,17 @@ $("#kjop").click(function() {
     else {
         $("#etternavnError").html("");
     }
-    if (telefon === "" || !telefonValidering.test(telefon)){
+    if (telefon === "" || telefonValidering.test(telefon)){
         $("#telefonError").html("Feil ved input av telefon nummer");
         feil = false;    }
     else {
         $("#telefonError").html("");
     }
-    if (epost === "" || !epostValidering.test(epost)){
+    if (epost === "" || epostValidering.test(epost)){
         $("#epostError").html("Feil ved input av epost");
         feil = false;    }
     else {
         $("#epostError").html("");
     }
-
-
-    if (feil===false) {
-        alert("Error ved kjøp av billett, se felter med feilmelding");
-    }
-else{
-    console.log(billett)
-    $.post("/lagre", billett, function (data) {
-    });
-
-    $("#antall").val("");
-    $("#film").val("");
-    $("#fornavn").val("");
-    $("#etternavn").val("");
-    $("#telefon").val("");
-    $("#epost").val("");
+return feil;
 }
-});
