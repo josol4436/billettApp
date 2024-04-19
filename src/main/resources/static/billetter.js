@@ -6,11 +6,11 @@ function hentAlle() {
 }
 
 function formaterData(billetter) {
-    let ut = "<table class='table table-striped'><tr><th>Antall</th><th>Film</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>Epost</th></tr>";
+    let ut = "<table class='table table-striped'><tr><th>Antall</th><th>Film</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>Epost</th><th></th><th></th></tr>";
 
     for (const billett of billetter){
         ut+= "<tr><td>" +billett.antall+ "</td><td>" +billett.film + "</td><td>" + billett.fornavn + "</td><td>" +
-            billett.etternavn + "</td><td>" + billett.telefon + "</td><td>" + billett.epost + "</td><td><button onclick='slettBillett(" + billett.billettNr + ")'>Slett</button><button onclick='oppdaterBillett(" + billett.billettNr + ")'>Oppdater</button></td></tr>";
+            billett.etternavn + "</td><td>" + billett.telefon + "</td><td>" + billett.epost + "</td><td><button class='btn btn-danger' onclick='slettBillett(" + billett.billettNr + ")'>Slett</button></td><td><button class='btn btn-primary' onclick='oppdaterBillett(" + billett.billettNr + ")'>Oppdater</button></td></tr>";
     }
 
     $("#ut").html(ut);
@@ -62,6 +62,5 @@ function oppdaterBillettiDB(){
     if (x.style.display === "block") {
         x.style.display = "none";
     }
-    hentAlle();
-    alert("Billett oppdatert");
+    hentAlle(); //Funker ikke fordi den er raskere enn det å putte ting opp på serveren:((
 }
