@@ -34,7 +34,7 @@ public class BillettRepository{
     }
 
     public List<Billett> hentAlle(){
-        List<Billett> alleBilletter = db.query("SELECT * FROM billett", new BillettRowMapper());
+        List<Billett> alleBilletter = db.query("SELECT * FROM billett ORDER BY etternavn", new BillettRowMapper());
         return alleBilletter;
     }
     public void slettAlle(){
